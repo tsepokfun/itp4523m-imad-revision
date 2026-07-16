@@ -1,0 +1,7 @@
+*.zip
+audio/
+*.py
+*.pdf
+*.docx
+tmp_*.txt
+__pycache__/
