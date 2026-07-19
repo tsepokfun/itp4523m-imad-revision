@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>File B2.html</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.ajax({
+        ___(a)___,  // three properties are missing in this Javascript object
+        success: function(weather) {
+           showWeather(weather);  // call function showWeather
+        }
+      });
+    });
+
+    function showWeather(weather) {
+      // parameter weather stores JSON data read from file weather.json
+      // update content on web page using data in parameter weather
+      wLogoBG = ___(b)___; // retrieve the element with id value 'wLogoBG'
+      wLogoBG.___(c)___;  // set the background colour to 'lightblue'
+      wLogo= document.getElementById('wLogo');
+      //Pass wLogo and logo ID from parameter weather to function updateLogoByID
+      updateLogoByID(___(d)___);  // call function updateLogoByID
+      wDate = document.getElementById('wDate');
+      wTemp = document.getElementById('wTemp');
+      wTempRange = document.getElementById('wTempRange');
+      wHumd= document.getElementById('wHumd');
+
+      wDate.innerHTML = "Date:" + weather.date ;
+      wTemp.innerHTML = "Temperature:" + weather.temp + "&deg;" ;
+      wTemp.style.fontWeight  = "bold";      
+      wTemp.style.fontSize  = "20px";  
+      wTempRange.innerHTML = "Range:" + weather.highest + "&deg;" ;
+           // according to figure B2a, append lowest data from parameter weather 
+           // to content of wTempRange
+      wTempRange.innerHTML ___(e)___;  
+      wHumd.innerHTML = "Humidity:" +  weather.humidity + "%" ;
+    }
+
+    function updateLogoByID(imgLogo, logoID) {
+      // Javascript array arrFile to store file names of logo which uploaded to img subfolder
+      // The order of files are refer to order number of logoID
+      arrFile = ["sunny.png", "cloudy.png", "rain.png", "thunderstorm.png"];
+      imgLogo.src = ___(f)___; // set imgLogo to show correct path and image in arrFile
+      imgLogo.setAttribute("height", 128);
+      imgLogo.___(g)___; // set the width of imgLogo to 128
+    }
+  </script>
+</head>
+<body>
+  <h2 id='heading'>Today Weather
+     <div id="wDate"></div>
+  </h2>
+
+  <table id="wTable" class="displayWidth" border="1">
+    <tr>
+      <td id="wLogoBG"><img src="" id="wLogo"></td>
+      <td>
+        <div id="wTemp"></div>
+        <div id="wTempRange"></div>
+        <div id="wHumd"></div>
+      </td>
+    </tr>
+  </table>
+</body></html>

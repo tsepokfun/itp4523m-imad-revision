@@ -1,0 +1,15 @@
+{
+    "patient": "Ho Sik Tak",
+    "meal": [
+        { "food": "rice", "limit": 700, "consumed": 450 },
+        { "food": "butter", "limit": 200, "consumed": 300 },
+        { "food": "chicken", "limit": 500, "consumed": 550 }
+    ]
+}
+
+Alert window output :
+Meal analysis for Ho Sik Tak :
+butter consumed exceed limit
+chicken consumed exceed limit
+The meal has 2 food exceed recommended limits
+Total calories of consumed food is 1300

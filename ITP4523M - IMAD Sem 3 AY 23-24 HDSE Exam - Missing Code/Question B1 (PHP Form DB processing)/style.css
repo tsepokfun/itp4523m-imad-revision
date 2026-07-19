@@ -1,0 +1,22 @@
+/* For file : coffeeMatch.php (Question B1) */
+body, input[type="submit"] {
+  font-family: Georgia;
+}
+
+fieldset {
+  display: block;
+  width: 250px;
+}
+
+fieldset>input[type="radio"]:not(:first-of-type) {
+  margin-left: 20px;
+}
+
+input[type="submit"] {
+  font-size: 1em;
+  margin-top: 7px;
+}
+
+fieldset:nth-child(2) {
+  margin-top: 7px;
+}

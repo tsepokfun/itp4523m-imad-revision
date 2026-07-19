@@ -1,0 +1,35 @@
+body {
+  font-family: Georgia;
+}
+
+h2 {
+  text-align: center;
+} 
+
+div  {
+  height: 30px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  text-align: center;
+}
+
+button {
+  font-family: inherit;
+  margin: 5px;
+  padding: 5px 30px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.displayWidth {
+  width: 480px;
+}

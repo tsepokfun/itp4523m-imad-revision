@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>File B2.html</title> 
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript"> 
+   $(document).ready(function() {
+      $.ajax({
+        ___(a)___   // three properties are missing in this JSON object
+        success: function(result) {
+          // In (b), retrieve date from JSON data and update to element with id dinnerDate
+          ___(b)___ = result.date;
+          ___(c)___;   // pass reservation from the JSON data to function loadData()
+        } 
+      });
+    });
+
+    function loadData(reservation) {   // function to load data to variable
+		for (i = 0; i < ___(d)___; i++) {   // A loop that run for number of reservation
+      // In (e), pass time of reservation to function getId() to find the correct cell ID and set to variable timeId
+			var timeId = ___(e)___;
+      // In (f), pass time of reservation to function getStatusAndColor() to find the
+      // correct color and status. Set these two data to array variable colorStatus
+			var colorStatus = ___(f)___;
+      // In (g), combine a string "style=…" and first element of the variable
+        // and set to variable backgroundCSS
+			var backgroundCSS = "style='background-color:" + ___(g)___ +
+      // In (h), update content to HTML element, according to Figures 2B to 2D,
+      // with an ID that matches timeId from part (e)
+			document.getElementById(timeId).innerHTML +=
+        "<div  class='tableDiv' " + ___(h)___ + "</div>" ;
+		   
+			
+		}
+	}
+    
+	function getId(time) {    // Function to find the correct cell ID
+    // split the string variable time into an array at every occurrence of ":"
+		var timeArr = 	time.split(":");
+    // return the combination of "t", hour and minute of the variable time
+		return "t" + timeArr[0] + timeArr[1];    
+	}
+	
+	function getStatusAndColor(time) {
+		 var status = ""; 
+		 var color = ""; 
+		 var current = new Date();    // retrieve the current date and time
+     // calculate total number of minutes since midnight (i.e. 00:00) by multiplying
+     // the current hour(i.e. getHours() method) by 60 and adding
+     // current minute(i.e. getMinutes() method)
+		 // var current = new Date('2023-07-04T18:15:00');  // to test with different current date and time
+		 var currentTimeStamp = current.getHours() * 60 + current.getMinutes();
+     // split the string variable time into an array at every occurrence of ":"
+		 var reserve = 	time.split(":");
+     // In (i), calculate total number of minutes since midnight (i.e. 00:00)
+     // by multiplying the first element (i.e. Hour) of array variable reserve by 60
+     // and adding the second element (i.e. Minute) of array variable reserve
+		 var reserveTimeStamp = ___(i)___;
+     // In (j), find the difference between the value of reserveTimestamp and the value of currentTimestamp
+		 var minuteDifferent = ___(j)___;
+		  
+		 if (minuteDifferent < 0) {
+		   status = "Expired";
+		   color = "lightgrey";
+		 } else if ((minuteDifferent >= 0) && (minuteDifferent <= 15)) {
+		   status = "Urgent";
+		   color = "lightcoral"
+		 } else if ((minuteDifferent > 15) && (minuteDifferent <= 30)) {
+		   status = "Semi-urgent";
+		   color = "lightgreen"	;	   
+		 } else if (minuteDifferent > 30) {
+		   status = "Non-urgent";
+		   color = "lightblue";
+		 } 
+		 return [color, status]; 
+	}
+  </script>
+  <style>
+    h2,h5,
+    div { 	 
+      text-align: center;
+      margin: 10px
+    }
+	.tableDiv{ 
+	  padding: 5px;
+	  display:inline-block;
+      border:1px dashed black ; 
+	}
+  </style>
+</head>
+
+<body style="font-family:Georgia;">
+  <h2>Daily Dinner Reservation</h2>
+  <table width="100%" border="1">
+    <tr><th>Time</th><th id="dinnerDate"></th></tr>
+    <tr><td>17:30</td><td id="t1730"></td></tr>
+    <tr><td>18:00</td><td id="t1800"></td></tr>
+    <tr><td>18:30</td><td id="t1830"></td></tr>
+    <tr><td>19:00</td><td id="t1900"></td></tr>
+    <tr><td>19:30</td><td id="t1930"></td></tr>
+    <tr><td>20:00</td><td id="t2000"></td></tr>
+    <tr><td>20:30</td><td id="t2030"></td></tr>
+    <tr><td>21:00</td><td id="t2100"></td></tr>
+    <tr><td>21:30</td><td id="t2130"></td></tr>
+  </table>
+</body></html>

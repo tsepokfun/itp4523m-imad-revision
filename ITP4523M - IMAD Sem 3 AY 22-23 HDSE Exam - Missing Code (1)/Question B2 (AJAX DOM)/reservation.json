@@ -1,0 +1,10 @@
+{
+  "date": "30-July-2023", 
+  "reservation":[     
+    {"name": "Chan Tai Man", "time": "17:30","seats": 2, "phone": "91234567"},
+    {"name": "LaLa Chu", "time": "18:30", "seats": 6, "phone": "68745632"},
+    {"name": "James Lau", "time": "19:30", "seats": 4, "phone": "96547890"},
+    {"name": "Jeremy Lam", "time": "19:30", "seats": 2, "phone": "93698521"},    
+    {"name": "Diana Cheung", "time": "21:30", "seats": 2, "phone": "61239874"}   
+    ]
+}

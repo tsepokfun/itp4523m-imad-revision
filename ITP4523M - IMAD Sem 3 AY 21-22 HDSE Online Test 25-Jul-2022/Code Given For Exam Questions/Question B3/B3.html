@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas - Draw a logo design</title>
+  <style type="text/css">
+    body,
+    input { font-family: "Georgia"; }
+    div { margin: 2px 0; }
+    input[type="number"] { width: 30px; }
+    canvas { border: 1px solid blue; }
+  </style>
+  <script type="text/javascript">
+    function drawDesign() {
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");  // canvas rendering context
+      var cWidth = canvas.width;  // width of canvas
+      var cHeight = canvas.height;  // height of canvas
+
+      ctx.save();  // save states of current context
+      ctx.   ___(a)___   ;  // erase all drawing on canvas
+         ___(b)___   ;  // move the origin (0, 0) to the center of canvas
+
+      // Draw the specified number of straight lines
+      numLines = document.   ___(c)___   .value;   // get input value for number of lines
+      logoText = document.   ___(d)___   .value;   // get input value for logo text
+      maxThickness = 20; // maximum thickness (px) of straight lines to draw
+      ctx.strokeStyle = "lightgrey";
+
+      for (var i = 0; i < numLines; i++) {
+        // all straight lines are evenly spaced by the same angle
+        ctx.   ___(e)___   ;   // each straight line has a different thickness
+        ctx.lineWidth = maxThickness / numLines * i;  // change line thickness
+        ctx.   ___(f)___   ;    // draw a straight line from the origin (0, 0)
+        ctx.   ___(g)___   (cWidth / 2, 0);
+        ctx.   ___(h)___   ();   // display the current path using the current strokeStyle
+        ctx.   ___(i)___   ;   // set the next straight line to draw is rotated clockwise
+      }
+      ctx.restore();  // retrieve saved states to current context
+      // Draw the logon text at the center of the canvas
+      ctx.   ___(j)___   ;  // align the text horizontally center
+      ctx.   ___(k)___   ;  // align the text vertically center
+      ctx.font = "40px Bodoni MT Black";
+      ctx.fillText(logoText, cWidth / 2, cHeight / 2);
+    }
+  </script>
+</head>
+<!-- provide the missing code for the three event handlers -->
+<body onload="   ___(l)___   ;">
+  <canvas id='canvas' width="300" height="300"></canvas>
+  <div>Number of lines in logo : 
+  <input type="number" id="numLines" value="12" onchange="   ___(l)___   ;"></div>
+  <div>Text in logo 
+  <input type="text" id="logoText" value="A.I. Lab" 
+    onchange="   ___(l)___   ;"></div>
+</body></html>

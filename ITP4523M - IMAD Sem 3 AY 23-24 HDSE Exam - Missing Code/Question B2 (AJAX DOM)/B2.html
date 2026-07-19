@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>File B2.html</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript">
+    jsonData = null;  // global variable stores JSON data read from file movie.json
+    
+    $(document).ready(function() {
+      $.ajax({
+        ___(a)___,   // three properties are missing in this Javascript object
+        success: function(movieSales) {
+          jsonData = movieSales;
+          showAllMovies(movieSales);
+        }
+      });
+    });
+
+    function showAllMovies(movieSales) {
+      // parameter movieSales stores JSON data read from file movie.json
+      // update content on web page using data in parameter movieSales
+      cinema = ___(b)___;   // retrieve the element with id value 'cinema'
+      cinema.innerHTML += movieSales.cinema;  // update cinema name in <h2> tag
+      
+      movieTable = document.getElementById('movieTable');
+      movies = movieSales.movies;
+      for (var i = 0; i < movies.length; i++) {
+        movieTable.innerHTML += trCode(___(c)___, ___(d)___);
+      }
+    }
+
+    function trCode(id, name) {
+      // return HTML code one table row
+      /*  if id=1, name="Despicable Me 4". It returns the HTML code :
+      <tr>
+        <td><button onclick="searchByID(1)">Show Detail</button></td>
+        <td>Despicable Me 4 (ID : 1)</td>
+      </tr>
+      */
+      return "<tr>" +
+        '<td><button onclick="searchByID(' + id + ')">Show Detail</button></td>' +
+        "<td>" + name + " (ID : " + id + ")</td>" +
+        "</tr>";
+    }
+    
+    function searchByID(id) {
+      detail = document.getElementById('detail');
+      detail.___(e)___;  // set background color to 'lightyellow'
+      // store the class name of <table> element in variable attrValue
+      attrValue = document.getElementById('movieTable').___(f)___;  
+      // set the class name of <div> element (id="detail") to the value of variable attrValue
+      ___(g)___("class", attrValue); 
+      
+      for (var i=0; i<___(h)___.length; i++) {
+        m = jsonData.movies[i];
+        // search the movie which matches the id value of parameter id
+        if (___(i)___) {
+          detail.innerHTML = "Movie ID : " + m.id + ", Attendance : " + m.attendance + 
+            ", Fare : $" + m.fare + ", Total = $" + (m.attendance * m.fare);
+          break;
+        }
+      }  // end of for-loop
+    }
+  </script>
+</head>
+<body>
+  <h2 id='cinema'>Box Office Sales of </h2>
+  <div id="detail" class=""></div>
+  <table id="movieTable" class="displayWidth" border="1">
+    <tr>
+      <th>Action</th>
+      <th>Movie Name</th>
+    </tr>
+  </table>
+</body></html>

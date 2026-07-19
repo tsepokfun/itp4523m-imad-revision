@@ -1,0 +1,8 @@
+{
+  "cinema": "Paradise Cinema",
+  "movies": [
+    {"id":1, "movie": "Despicable Me 4", "attendance": 564, "fare": 140},
+    {"id":2, "movie": "The Fall Guy", "attendance": 486, "fare": 130},
+    {"id":3, "movie": "Star Wars", "attendance": 278, "fare": 105}
+  ]
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas - Draw a logo design</title>
+  <style type="text/css">
+    body,
+    input { font-family: "Georgia"; }
+    div { margin: 2px 0; }
+    input[type="number"] { width: 30px; }
+    canvas { border: 1px solid blue; }
+  </style>
+  <script type="text/javascript">
+    
+    function toRadian(degree) { 
+      return degree * Math.PI / 180; 
+    }
+    
+    function drawLogo() {
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      var w = canvas.width;   // width of canvas
+      var h = canvas.height;   // height of canvas
+
+      // number of sides of the polygon
+      numSides = document.getElementById('numSides').value; // number of sides of the polygon
+      words = document.getElementById('words').value;
+      word_array = words.split(" ");  // split a string into an array of words
+      
+      ctx.___(a)___;   // set the line colour of the path to blue
+      ctx.lineWidth = 3;
+      ctx.___(b)___;   // set the fill colour of the text to red
+      
+      ctx.___(c)___;   // set text to horizontally centerd at its drawn position
+      ctx.textBaseline = "bottom";
+      ctx.font = "20px Bodoni MT Black";      
+      
+      ctx.save(); // save states of current context
+      ctx.___(d)___;   // erase all drawing on the canvas
+      // in part (e) move the origin (0, 0) of the coordinate grid to the center of canvas
+      ctx.___(e)___;
+      
+      // parameters of the polygon to draw
+      int_ang = 360/numSides;  // in unit of 'degree'
+      ext_ang = 180 - int_ang;  // in unit of 'degree'
+      angRotate = (180 - ext_ang)/2;  // in unit of 'degree'
+      diagonal_len = 130;  // diagonal length of the polygon
+      // variable len defines the length of each side of the polygon
+      len = diagonal_len * Math.cos(toRadian(ext_ang/2));
+      
+      // draw the polygon and words
+      ctx.beginPath();
+      for (i=0; i<numSides; i++) {
+        x = len;
+        y = len / Math.tan(toRadian(int_ang/2));
+        // draw a straight line for one side of the polygon
+        ctx.moveTo(-x, y);
+        ctx.___(f)___;   // draw a straight line to coordinate (x, y)
+        // in part (g), draw a different text on each straight line at coordinate (0, y)
+        ctx.___(g)___;
+        // in part (h), rotate the coordinate grid in clockwise by an angle of int_ang degree
+        ctx.___(h)___;
+      }
+      
+      ctx.stroke();  // show the line of the path drawn
+      ctx.restore(); // retrieve saved states to current context
+    }
+    
+  </script>
+</head>
+<!-- set appropriate event handlers for the two input controls -->
+<body onload="drawLogo();">
+  <canvas id='canvas' width="300" height="300"></canvas>
+  <div>Number of sides in polygon : 
+  <input type="number" id="numSides" value="5" ___(i)___></div>
+  <div>Words separated by space 
+  <input type="text" id="words" size="25" value="Virtual Reality Is The Future" ___(i)___></div>
+</body></html>

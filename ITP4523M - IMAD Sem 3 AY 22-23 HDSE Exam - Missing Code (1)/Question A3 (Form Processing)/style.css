@@ -1,0 +1,21 @@
+/* For file : A3.php */
+body {
+  font-family: Georgia;
+}
+
+input[type="number"] {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+  margin-top: 15px;
+}
+
+input[type="submit"] {
+  margin-top: 5px;
+}
+
+form {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas - Draw a brick in Tetris game</title>
+  <style type="text/css">
+    * { font-family: "Georgia"; }
+    button { font-size: 1em; font-weight: bold; }
+    div { margin: 2px 0; }
+    canvas { border: 1px solid black; margin-bottom: 10px;}
+  </style>
+  <script type="text/javascript">
+    // declare global variables
+    brickArray = [  // two-dimension array to represent the brick shape
+      [1, 1, 1],
+      [0, 0, 1]
+    ];
+
+    var ctx =  null;  // context created from canvas
+    var angle = 0;  // initial brick rotation angle
+    var sideLen = null;  // side length of the square
+    
+    function init() {
+      var canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+      // get input value from the slider control
+      sideLen = parseInt(document.___(a)___);
+      drawBrick();
+    }
+    
+    function drawBrick() {
+      ctx.save();  // save states of current context
+      var w = ctx.canvas.width;  // canvas width
+      var h = ctx.canvas.height;  // canvas height
+      ctx.___(b)___;  // erase all drawings in the canvas
+      
+      ctx.fillStyle = "black";
+      ctx.textAlign = "center";
+      ctx.font = "bold 20px Georgia"
+      ___(c)___("Tetris Game", w/2, 30);  // display a title at top of the canvas
+      
+      ctx.translate(w/2, h/2);  // move the origin (0, 0) of the coordinate grid to the center of canvas
+      ctx.___(d)___;  // rotate the coordinate grid by 'angle' degree
+      
+      brickWidth = brickArray[0].length * sideLen;
+      brickHeight = brickArray.length * sideLen;
+      startX = (0 - brickWidth)/2;
+      startY = (0 - brickHeight)/2;
+      y = startY;
+      
+      ctx.beginPath();
+      for (r=0; r < ___(e)___; r++) {  // r means row
+        x = startX;
+        row = brickArray[r];
+        for (c=0; c < ___(f)___; c++) {  // c means column
+          if (row[c] == 1)
+            drawSquare(ctx, x, y, sideLen);
+          x += sideLen;
+        }
+        ___(g)___;
+      }
+      ctx.restore();  // retrieve saved states to current context
+    }
+    
+    function drawSquare(ctx, x, y, sideLen) {
+      // draw a square at (x, y) with sideLen as the side length value
+      ctx.fillStyle = "yellow";  // fill the square with "yellow" colour
+      ctx.fillRect(x, y, sideLen, sideLen);
+      ctx.___(h)___;  // draw a black border for the square
+    }
+    
+    function rotateBrick(rotateMore) {  // rotateMore is additional rotation angle
+      angle = ___(i)___ % 360;
+      drawBrick();
+    }
+    
+    function toRadian(degree) {   // convert degree to radian
+      return degree * Math.PI / 180; 
+    }
+  </script>
+</head>
+<!-- set appropriate event handlers for the two input controls -->
+<body onload="init();">
+  <canvas id='canvas' width="300" height="300"></canvas>
+  <div>Rotate 'brick' 90 degrees in direction :
+    <div>
+      <button onclick="rotateBrick(90);">Clockwise</button> or
+      <button onclick="rotateBrick(-90);">Anti-clockwise</button>
+    </div>
+  </div>
+  <div>Side length of the square (pixels) : 30 
+    <input type="range" min="30" max="70" value="50" id="squareLen" onchange="init();"> 70</div>
+</body>
+</html>

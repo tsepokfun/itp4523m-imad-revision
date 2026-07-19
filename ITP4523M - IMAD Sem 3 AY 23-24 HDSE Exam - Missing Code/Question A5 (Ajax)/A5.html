@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A5 - Analyze actors in a movie</title>
+  <script src="jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        ___(i)___,
+        ___(ii)___,
+        success: function (movieObj) {
+          var statistics = {
+            numMale : 0,
+            numFemale : 0,
+            totalAge : 0
+          };
+          display(movieObj, statistics);
+        }  // end of function body
+      });
+    });
+    function display(movieObj, statistics) {
+      actors = movieObj.actors;
+      for (i = 0; i < actors.length; i++) {  // process each actor
+        actor = actors[i];
+        if (___(iii)___) {
+          statistics.numMale++;
+        } else {
+          statistics.numFemale++
+        }
+        ___(v)___ += ___(iv)___;  // accumulate the age
+      } // end of for-loop
+
+      // display the required information in required format
+      message = "Statistics for movie '" + movieObj.movie + "' :\n";
+      message += statistics.numMale + " male and " + statistics.numFemale + " female actors participated in this movie\n";
+      message += "Average age of all actors is " + (statistics.totalAge ___(vi)___);
+
+      alert(message);  // display the message
+
+    } // end of function body
+  </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas - Draw a brick in Tetris game</title>
+  <style type="text/css">
+    * { font-family: "Georgia"; }
+    button { font-size: 1em; font-weight: bold; }
+    div { margin: 2px 0; }
+    canvas { border: 1px solid black; margin-bottom: 10px;}
+  </style>
+  <script type="text/javascript">
+    var ctx =  null;  // context created from canvas
+    var radius = null;  // radius for the circle (head)
+
+    function init() {
+      var canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+      // get input value from the slider control
+      radius = parseInt(document.getElementById___(a)___);
+      drawFigure();
+    }
+    
+    function drawFigure() {
+      ctx.save();  // save states of current context
+      var w = ctx.canvas.width;  // canvas width
+      var h = ctx.canvas.height;  // canvas height
+      ctx.___(b)___(0, 0, w, h);  // erase all drawings in the canvas
+      
+      ctx.fillStyle = "black";
+      ctx.textAlign = "center";
+      ctx.font = "bold 20px Georgia"
+      ctx.___(c)___("Game Over", w/2, h - 20);  // display "Game Over" in canvas
+      xPos = 150;   // x-coordinate for the body figure
+      ctx.beginPath();
+      // draw a rectange with width 100.5px and height 200px
+      ctx.strokeRect(50, 50, 100.5, 200);
+      // draw a white straight line
+      drawLine(ctx, "white", 150.5, 70, 150.5, 250);
+      // draw the head (a circle using the specified radius)
+      ctx.moveTo(xPos+radius, 90);
+      ctx.arc(xPos, 90, radius, 0, ___(d)___);
+      ctx.fill();
+
+     // draw a vertical line for the body
+      drawLine(ctx, "black", xPos, 100, xPos, 200);
+
+      // draw arms
+      len = 35;   // length of arms and legs
+      arm_yPos = 140;  // y-coordinate for the arms
+      drawLine(ctx, "black", xPos, arm_yPos, xPos-len, arm_yPos+len);
+      drawLine(ctx, "black", xPos, arm_yPos, xPos+len, arm_yPos+len);
+
+      // draw legs
+      leg_yPos = 200;  // y-coordinate for the legs
+      drawLine(ctx, "black", xPos, leg_yPos, xPos-len, leg_yPos+len);
+      drawLine(ctx, "black", xPos, leg_yPos, xPos+len, leg_yPos+len);
+      ctx.restore();  // retrieve saved states to current context
+    }  // end of function drawFigure
+
+
+    function drawLine(ctx, lineColour, x1, y1, x2, y2) {
+      // draw a line from coordinates (x1, y1) to (x2, y2) with colour set to lineColour
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(___(e)___);
+      ctx.lineTo(___(f)___);
+      ctx.___(g)___;  // set the line colour
+      ctx.stroke();
+      ctx.restore();
+    }  // end of function drawLine
+  </script>
+</head>
+<!-- set appropriate event handlers for the input control -->
+<body onload="init();">
+  <canvas id='canvas' width="300" height="300"></canvas>
+  <div>Radius of the circle (pixels) : 20
+    <input type="range" min="20" max="30" value="25" 
+    id="radius" ___(h)___> 30</div>
+</body>
+</html>

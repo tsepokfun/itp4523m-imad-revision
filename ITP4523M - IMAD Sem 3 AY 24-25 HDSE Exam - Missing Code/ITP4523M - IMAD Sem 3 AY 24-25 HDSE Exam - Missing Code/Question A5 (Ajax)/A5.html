@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A5 - Analyze actors in a movie</title>
+  <script src="jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        url: 'getJSON.php',
+        ___(i)___,
+        success: function (orderObj) {
+          totalAmount = 0;   // initialize total amount of the order
+          items = orderObj.items;  // get the array of items from the order
+          price = ___(ii)___;  // pass array items to searchItem function
+          for (i = 0; i < items.length; i++) {
+            totalAmount += ___(iii)___;   // calculate total amount of the order
+          }
+          message = "Total amount of the order is HK$" + totalAmount + ", ";
+          if (price != "Item not found") {
+            message += "the price is HK$" + price + " for searched item";
+          } else message += "the searched item is not found";
+          ___(iv)___;  // display the alert message
+        }  // end of function body
+      });
+    });
+
+    // function to search the price of an item from array items
+    function searchItem(items) {  // parameter items is an array of items
+      searchName = prompt("Enter the name of the item to search:");
+      for (i = 0; i < items.length; i++)
+        if (items[i].name == searchName)
+          return ___(v)___;   // return the price of the item if found
+      return "Item not found";
+    } // end of function searchItem
+  </script>
+</head>
+<body>
+</body>
+</html>

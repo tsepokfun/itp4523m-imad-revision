@@ -1,0 +1,9 @@
+Output when the web page first loaded :
+Unit price given by Shop A is $11
+Unit price given by Shop B is $9
+Unit price given by Shop C is $10
+Unit price given by Shop D is $9.5
+
+Output when reload the web page :
+You will pay more from : Shop A, Shop C
+The lowest unit price is $9 amongst all promotions

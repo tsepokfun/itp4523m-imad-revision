@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>File B2.html</title>
+  <style>
+    h2,h5,
+    div {
+       
+      text-align: center;
+      margin: 10px
+    }
+    
+  </style>
+  <script src="jquery.min.js"></script>
+  <script type="text/javascript">
+    
+    $(document).ready(function () {
+      $.ajax({
+           ___(a)___     // three properties are missing in this JSON object
+        success: function (result) {
+        // In (b), retrieve year and week from JSON data, combine year, “ Week ” and week 
+          var pageDesc =    ___(b)___    ;  
+        // In (c), find the number of songs from JSON data, combine with “ songs”
+          var songCount =    ___(c)___    ; 
+             ___(d)___    = pageDesc; // update content of the element with id pageDesc
+             ___(e)___    = songCount; // update content of the element with id songCount
+             ___(f)___    ; // pass array song from the JSON data to function loadData() 
+        }
+      });
+    });
+
+    function findMax(voteSong) { // to find the maximum votes from array voteSong
+      var max = 0 ;
+      for (j = 0;    ___(g)___    ; j++) {  // a loop through all voteSong
+        if (    ___(h)___    ) {    // check vote value of voteSong is larger than max or not 
+            max =    ___(i)___     ;  //  update the value of max
+        }
+      }
+      return max ;
+    }
+
+    function loadData(song) {  // function to load data to variable
+      var maxVote = findMax(song) ; // Set maxVote to maximum value of vote
+      // Set content to HTML table header
+      var content = "<table align='center' width='700' border='1'>" ; 
+      content += "<tr><td>No.</td><td>Title</td>" ;
+      content += "<td>Singer</td><td>Listen</td><td>Vote</td></tr>" ;
+      for (i = 0;    ___(j)___    ; i++) {  // a loop that run for number of song
+        var index =    ___(k)___     ; //  Set index to row number  
+        content += "<tr>";
+        content += "<td>" + index + "</td>"; 
+        content += "<td>" +    ___(l)___    ;  // Add title to content
+        if (    ___(m)___    ) {    // check vote value of Song is equal to maxVote or not 
+            content += "<img src='champion.png'>";
+        }
+        content += "</td>";
+        content += "<td>" +    ___(n)___    + "</td>"; // Add singer to content
+        content += "<td>";
+        content += "<audio controls>";
+        // Add file to content
+        content += "<source src='song/" +    ___(o)___    + "' >"; 
+        content += "</audio>";
+        content += "</td>";
+        content += "<td>" +    ___(p)___    + "</td>"; // Add vote to content
+        content += "</tr>";
+      }
+      content += "</table>";
+         ___(q)___    = content; // update the content of the element with id songList
+    }
+    
+  </script>
+</head>
+
+<body style="font-family:Georgia;">
+  <h2>Weekly Top Song</h2>
+  <h2 id="pageDesc"></h2>
+  <h5 id="songCount"></h5>
+  <div id="songList" ></div>
+</body></html> 

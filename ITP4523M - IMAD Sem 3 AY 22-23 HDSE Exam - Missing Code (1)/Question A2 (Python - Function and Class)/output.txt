@@ -1,0 +1,4 @@
+Error : Cannot add John because Team A is full
+Error : Cannot add Peter who belongs to Team A
+Players of Team A : ['Peter', 'Sam']
+Players of Team B : ['Kelvin']
